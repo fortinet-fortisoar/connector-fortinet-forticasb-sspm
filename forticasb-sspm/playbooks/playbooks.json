@@ -1,1 +1,442 @@
-{}
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+      "@type": "WorkflowCollection",
+      "name": "Sample - FortiCASB-SSPM - 1.0.0",
+      "description": "FortiCASB-SSPM (SaaS Security Posture Management) is a cloud-based solution that provides visibility into security risks, user activities, identities, and data exposure across connected SaaS applications via API integration.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "forticasb-sspm"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "50843ace-5ade-477a-bcf9-6dca161319a9",
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "triggerLimit": null,
+          "description": "Pull SSPM findings/misconfigurations (risks)",
+          "name": "Get Risks",
+          "tag": "#FortiCASB-SSPM",
+          "recordTags": [
+            "forticasb-sspm"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/394f28a9-a490-4601-af04-9a2cb1e90c54",
+          "steps": [
+            {
+              "uuid": "394f28a9-a490-4601-af04-9a2cb1e90c54",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "15ce8983-f6b2-4c80-8acf-dfd6b0b2377a",
+                "title": "FortiCASB-SSPM: Get Risks",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "d1812f2f-28a8-4a0d-918e-2200da23d51c",
+              "@type": "WorkflowStep",
+              "name": "Get Risks",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "FortiCASB-SSPM",
+                "config": "''",
+                "params": {
+                  "limit": 20,
+                  "sort": "DESC",
+                  "minimumScore": null,
+                  "maximumScore": 100,
+                  "sortField": "SCORE"
+                },
+                "version": "1.0.0",
+                "connector": "forticasb-sspm",
+                "operation": "get_risks",
+                "operationTitle": "Get Risks",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3db2e48e-6727-463b-a46d-dade75f79d2d",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Risks",
+              "sourceStep": "/api/3/workflow_steps/394f28a9-a490-4601-af04-9a2cb1e90c54",
+              "targetStep": "/api/3/workflow_steps/d1812f2f-28a8-4a0d-918e-2200da23d51c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "8260aa9f-507a-40a5-babb-f1f890964fdd",
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "triggerLimit": null,
+          "description": "Get Suridata identities",
+          "name": "Get Identities",
+          "tag": "#FortiCASB-SSPM",
+          "recordTags": [
+            "forticasb-sspm"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/3484614d-370d-4da4-905a-22183d9e4b25",
+          "steps": [
+            {
+              "uuid": "3484614d-370d-4da4-905a-22183d9e4b25",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "7ab4c3d0-2e81-463c-b60c-1969919abdd8",
+                "title": "FortiCASB-SSPM: Get Identities",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "a097d844-a83b-4229-80ff-d71d1d442899",
+              "@type": "WorkflowStep",
+              "name": "Get Identities",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "FortiCASB-SSPM",
+                "config": "''",
+                "params": {
+                  "limit": 1000
+                },
+                "version": "1.0.0",
+                "connector": "forticasb-sspm",
+                "operation": "get_identities",
+                "operationTitle": "Get Identities",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "4f74dc83-be98-446a-a4be-e0c213e0e75f",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Identities",
+              "sourceStep": "/api/3/workflow_steps/3484614d-370d-4da4-905a-22183d9e4b25",
+              "targetStep": "/api/3/workflow_steps/a097d844-a83b-4229-80ff-d71d1d442899"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a526db62-dea2-4499-89fa-d980dba26ff6",
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "triggerLimit": null,
+          "description": "Get User activities.",
+          "name": "Get User Activities",
+          "tag": "#FortiCASB-SSPM",
+          "recordTags": [
+            "forticasb-sspm"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/6f46e30a-12e1-4a77-94e8-8ac1ff27ce66",
+          "steps": [
+            {
+              "uuid": "6f46e30a-12e1-4a77-94e8-8ac1ff27ce66",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "00c86db8-da2c-4c72-a523-1b2255cbe906",
+                "title": "FortiCASB-SSPM: Get User Activities",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ca65e908-e879-4545-9572-2ea2bf07fc34",
+              "@type": "WorkflowStep",
+              "name": "Get User Activities",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "FortiCASB-SSPM",
+                "config": "''",
+                "params": {
+                  "limit": 20,
+                  "activityTypes": null,
+                  "applicationNames": "",
+                  "userEMails": "",
+                  "timeSortField": "activity_ts",
+                  "startDateTime": null,
+                  "endDateTime": null,
+                  "order": "asc"
+                },
+                "version": "1.0.0",
+                "connector": "forticasb-sspm",
+                "operation": "get_user_activities",
+                "operationTitle": "Get User Activities",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "bad3d864-ce5b-4a13-a170-ecb2180a836e",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get User Activities",
+              "sourceStep": "/api/3/workflow_steps/6f46e30a-12e1-4a77-94e8-8ac1ff27ce66",
+              "targetStep": "/api/3/workflow_steps/ca65e908-e879-4545-9572-2ea2bf07fc34"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a838589d-6dab-4ead-aa7c-19d40ef10ef5",
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "triggerLimit": null,
+          "description": "Get details and information related to files.",
+          "name": "Get Files",
+          "tag": "#FortiCASB-SSPM",
+          "recordTags": [
+            "forticasb-sspm"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/61089cf1-670a-436a-a1fd-4f5de1cb6b02",
+          "steps": [
+            {
+              "uuid": "61089cf1-670a-436a-a1fd-4f5de1cb6b02",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "b6484d5f-7e3b-49f4-bd04-283167e37921",
+                "title": "FortiCASB-SSPM: Get Files",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "47cc8dc8-313f-46ff-bfb2-5fede1ee30eb",
+              "@type": "WorkflowStep",
+              "name": "Get Files",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "FortiCASB-SSPM",
+                "config": "''",
+                "params": {
+                  "limit": 20,
+                  "sort": "desc",
+                  "createDateTimeFrom": null,
+                  "createDateTimeTo": null,
+                  "updateDateTimeFrom": null,
+                  "updateDateTimeTo": null
+                },
+                "version": "1.0.0",
+                "connector": "forticasb-sspm",
+                "operation": "get_files",
+                "operationTitle": "Get Files",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "b7ed3573-c9ff-46c5-89ca-4f4bc88363c2",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Files",
+              "sourceStep": "/api/3/workflow_steps/61089cf1-670a-436a-a1fd-4f5de1cb6b02",
+              "targetStep": "/api/3/workflow_steps/47cc8dc8-313f-46ff-bfb2-5fede1ee30eb"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "80a5765e-665c-4bb6-afe6-ad9910161a9e",
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "triggerLimit": null,
+          "description": "Get FortiCASB-SSPM Audit Log",
+          "name": "Get Audit Log",
+          "tag": "#FortiCASB-SSPM",
+          "recordTags": [
+            "forticasb-sspm"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bba3327c-18d0-4e7c-a907-a70196022430",
+          "steps": [
+            {
+              "uuid": "bba3327c-18d0-4e7c-a907-a70196022430",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "395c4f94-7480-42d4-b97a-33032a89cc13",
+                "title": "FortiCASB-SSPM: Get Audit Log",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "97184d98-d971-4410-9a7e-47fd94134dd5",
+              "@type": "WorkflowStep",
+              "name": "Get Audit Log",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "FortiCASB-SSPM",
+                "config": "''",
+                "params": {
+                  "limit": 20,
+                  "sort": "DESC",
+                  "startDate": null,
+                  "endDate": null
+                },
+                "version": "1.0.0",
+                "connector": "forticasb-sspm",
+                "operation": "get_audit_log",
+                "operationTitle": "Get Audit Log",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d3b5d9da-040b-461f-80ca-0bab8cf4ec17",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Audit Log",
+              "sourceStep": "/api/3/workflow_steps/bba3327c-18d0-4e7c-a907-a70196022430",
+              "targetStep": "/api/3/workflow_steps/97184d98-d971-4410-9a7e-47fd94134dd5"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
