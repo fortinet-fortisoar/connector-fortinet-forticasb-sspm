@@ -1,0 +1,379 @@
+{
+    "name": "forticasb-sspm",
+    "version": "1.0.0",
+    "label": "FortiCASB-SSPM",
+    "description": "FortiCASB-SSPM (SaaS Security Posture Management) is a cloud-based solution that provides visibility into security risks, user activities, identities, and data exposure across connected SaaS applications via API integration.",
+    "publisher": "Julian Petersohn (Fortinet Cloud CSE)",
+    "icon_small_name": "FortiCASB-Cloud_small.png",
+    "icon_large_name": "FortiCASB-Cloud_medium.png",
+    "category": [
+        "Cloud access security broker (CASB)"
+    ],
+    "configuration": {
+        "fields": [
+            {
+                "title": "Integration Key",
+                "type": "password",
+                "name": "integrationKey",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": null,
+                "tooltip": "Provide the Integration Key Value of the API Key."
+            },
+            {
+                "title": "URL",
+                "type": "url",
+                "name": "uRL",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "https://example.app.suridata.ai",
+                "tooltip": "URL for the tenanat of FortiCASB-SSPM. For Example: https://<customer_name>.app.suridata.ai"
+            },
+            {
+                "title": "User ID",
+                "type": "text",
+                "name": "userID",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "tooltip": "Provide the User ID Value of the API Key."
+            }
+        ]
+    },
+    "operations": [
+        {
+            "title": "Get Risks",
+            "operation": "get_risks",
+            "description": "Pull SSPM findings/misconfigurations (risks)",
+            "parameters": [
+                {
+                    "title": "Limit",
+                    "type": "integer",
+                    "name": "limit",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 20,
+                    "tooltip": "Limit the amount of returned results"
+                },
+                {
+                    "title": "Sort",
+                    "type": "select",
+                    "name": "sort",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "DESC",
+                    "tooltip": "Sort order of creation date",
+                    "options": [
+                        "ASC",
+                        "DESC"
+                    ]
+                },
+                {
+                    "title": "Minimum Score",
+                    "type": "integer",
+                    "name": "minimumScore",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results from minimum score"
+                },
+                {
+                    "title": "Maximum Score",
+                    "type": "integer",
+                    "name": "maximumScore",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 100,
+                    "tooltip": "Filter results to maximum score"
+                },
+                {
+                    "title": "Sort Field",
+                    "type": "text",
+                    "name": "sortField",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "SCORE",
+                    "tooltip": "Field to sort by"
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Get Identities",
+            "operation": "get_identities",
+            "description": "Get Suridata identities",
+            "parameters": [
+                {
+                    "title": "Limit",
+                    "type": "integer",
+                    "name": "limit",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 1000,
+                    "tooltip": "Limit the number of results in the response"
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Get User Activities",
+            "operation": "get_user_activities",
+            "description": "Get User activities.",
+            "parameters": [
+                {
+                    "title": "Limit",
+                    "type": "integer",
+                    "name": "limit",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 20,
+                    "tooltip": "Limit the number of results in the response"
+                },
+                {
+                    "title": "Activity Types",
+                    "type": "select",
+                    "name": "activityTypes",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter specific activities types",
+                    "options": [
+                        "file_viewed",
+                        "file_deleted",
+                        "file_moved",
+                        "file_copied",
+                        "file_downloaded",
+                        "file_shared",
+                        "file_sharing_revoked",
+                        "file_shared_internally",
+                        "file_shared_externally",
+                        "file_link_created",
+                        "file_owner_changed",
+                        "login_success",
+                        "login_failure",
+                        "user_created",
+                        "user_deleted",
+                        "group_created",
+                        "group_deleted",
+                        "group_assigned",
+                        "group_deassigned",
+                        "mfa_enabled",
+                        "mfa_disabled",
+                        "password_reset",
+                        "enabled_third_party",
+                        "disabled_third_party",
+                        "add_third_party_permissions",
+                        "remove_third_party_permissions",
+                        "sensitivity_label_applied",
+                        "sensitivity_label_removed",
+                        "sensitivity_label_changed"
+                    ]
+                },
+                {
+                    "title": "Application Names",
+                    "type": "text",
+                    "name": "applicationNames",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Filter specific applications names"
+                },
+                {
+                    "title": "User E-Mails",
+                    "type": "text",
+                    "name": "userEMails",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "tooltip": "Filter specific emails that triggered the activity"
+                },
+                {
+                    "title": "Time Sort Field",
+                    "type": "select",
+                    "name": "timeSortField",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "activity_ts",
+                    "tooltip": "Determine if time sort and filter apply to activity time or event creation time",
+                    "options": [
+                        "activity_ts",
+                        "created_at"
+                    ]
+                },
+                {
+                    "title": "Start Date/Time",
+                    "type": "datetime",
+                    "name": "startDateTime",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results from date according to field_time"
+                },
+                {
+                    "title": "End Date/Time",
+                    "type": "datetime",
+                    "name": "endDateTime",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results to date according to field_time"
+                },
+                {
+                    "title": "Order",
+                    "type": "select",
+                    "name": "order",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "asc",
+                    "tooltip": "Sort results according to field_time",
+                    "options": [
+                        "asc",
+                        "desc"
+                    ]
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Get Files",
+            "operation": "get_files",
+            "description": "Get details and information related to files.",
+            "parameters": [
+                {
+                    "title": "Limit",
+                    "type": "integer",
+                    "name": "limit",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 20,
+                    "tooltip": "Limit the number of results in the response"
+                },
+                {
+                    "title": "Sort",
+                    "type": "select",
+                    "name": "sort",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "desc",
+                    "tooltip": "Sort order of creation date",
+                    "options": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                {
+                    "title": "Create Date/Time From",
+                    "type": "datetime",
+                    "name": "createDateTimeFrom",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results from start date of file creation"
+                },
+                {
+                    "title": "Create Date/Time To",
+                    "type": "datetime",
+                    "name": "createDateTimeTo",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results till end date of file creation"
+                },
+                {
+                    "title": "Update Date/Time From",
+                    "type": "datetime",
+                    "name": "updateDateTimeFrom",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results from start date of file modification"
+                },
+                {
+                    "title": "Update Date/Time To",
+                    "type": "datetime",
+                    "name": "updateDateTimeTo",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results till end date of file modification"
+                }
+            ],
+            "open": false
+        },
+        {
+            "title": "Get Audit Log",
+            "operation": "get_audit_log",
+            "description": "Get FortiCASB-SSPM Audit Log",
+            "parameters": [
+                {
+                    "title": "Limit",
+                    "type": "integer",
+                    "name": "limit",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 20,
+                    "tooltip": "Limit the number of results in the response"
+                },
+                {
+                    "title": "Sort",
+                    "type": "select",
+                    "name": "sort",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": "DESC",
+                    "tooltip": "Sort order of creation date",
+                    "options": [
+                        "ASC",
+                        "DESC"
+                    ]
+                },
+                {
+                    "title": "Start Date",
+                    "type": "datetime",
+                    "name": "startDate",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results from start date"
+                },
+                {
+                    "title": "End Date",
+                    "type": "datetime",
+                    "name": "endDate",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": null,
+                    "tooltip": "Filter results till end date"
+                }
+            ],
+            "open": false
+        }
+    ]
+}
