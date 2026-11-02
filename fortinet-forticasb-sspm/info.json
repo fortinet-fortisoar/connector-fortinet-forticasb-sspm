@@ -1,11 +1,15 @@
 {
-    "name": "forticasb-sspm",
+    "name": "fortinet-forticasb-sspm",
     "version": "1.0.0",
-    "label": "FortiCASB-SSPM",
+    "label": "Fortinet FortiCASB-SSPM",
     "description": "FortiCASB-SSPM (SaaS Security Posture Management) is a cloud-based solution that provides visibility into security risks, user activities, identities, and data exposure across connected SaaS applications via API integration.",
-    "publisher": "Julian Petersohn (Fortinet Cloud CSE)",
-    "icon_small_name": "FortiCASB-Cloud_small.png",
-    "icon_large_name": "FortiCASB-Cloud_medium.png",
+    "publisher": "Fortinet",
+    "contributor": "Julian Petersohn (Fortinet Cloud CSE)",
+    "cs_approved": false,
+    "cs_compatible": true,
+    "help_online": "",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
     "category": [
         "Cloud access security broker (CASB)"
     ],
@@ -19,6 +23,7 @@
                 "visible": true,
                 "editable": true,
                 "value": null,
+                "description": "Provide the Integration Key Value of the API Key.",
                 "tooltip": "Provide the Integration Key Value of the API Key."
             },
             {
@@ -29,6 +34,7 @@
                 "visible": true,
                 "editable": true,
                 "value": "https://example.app.suridata.ai",
+                "description": "URL for the tenanat of FortiCASB-SSPM. For Example: https://<customer_name>.app.suridata.ai",
                 "tooltip": "URL for the tenanat of FortiCASB-SSPM. For Example: https://<customer_name>.app.suridata.ai"
             },
             {
@@ -39,6 +45,7 @@
                 "visible": true,
                 "editable": true,
                 "value": "",
+                "description": "Provide the User ID Value of the API Key.",
                 "tooltip": "Provide the User ID Value of the API Key."
             }
         ]
@@ -47,16 +54,18 @@
         {
             "title": "Get Risks",
             "operation": "get_risks",
+            "annotation": "get_risks",
             "description": "Pull SSPM findings/misconfigurations (risks)",
             "parameters": [
                 {
                     "title": "Limit",
                     "type": "integer",
                     "name": "limit",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": 20,
+                    "description": "Limit the amount of returned results",
                     "tooltip": "Limit the amount of returned results"
                 },
                 {
@@ -67,6 +76,7 @@
                     "visible": true,
                     "editable": true,
                     "value": "DESC",
+                    "description": "Sort order of creation date",
                     "tooltip": "Sort order of creation date",
                     "options": [
                         "ASC",
@@ -81,6 +91,7 @@
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results from minimum score",
                     "tooltip": "Filter results from minimum score"
                 },
                 {
@@ -91,52 +102,155 @@
                     "visible": true,
                     "editable": true,
                     "value": 100,
+                    "description": "Filter results to maximum score",
                     "tooltip": "Filter results to maximum score"
                 },
                 {
                     "title": "Sort Field",
                     "type": "text",
                     "name": "sortField",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": "SCORE",
+                    "description": "Field to sort by",
                     "tooltip": "Field to sort by"
                 }
             ],
+            "output_schema": {
+                "content": {
+                    "risks": [
+                        {
+                            "name": "",
+                            "score": "",
+                            "domain": "",
+                            "editor": "",
+                            "assignee": "",
+                            "frameworks": [
+                                {
+                                    "title": "",
+                                    "article": ""
+                                }
+                            ],
+                            "ticket_key": "",
+                            "description": "",
+                            "remediation": "",
+                            "created_date": "",
+                            "affected_apps": [
+                                {
+                                    "application": "",
+                                    "instance_display_name": ""
+                                }
+                            ],
+                            "records_count": "",
+                            "threat_vectors": [
+                                ""
+                            ],
+                            "resolution_date": "",
+                            "resolution_status": "",
+                            "remediation_effect": "",
+                            "assets_updated_date": ""
+                        }
+                    ]
+                },
+                "pagination": {
+                    "next_page": "",
+                    "page_token": "",
+                    "page_records": "",
+                    "total_records": ""
+                }
+            },
             "open": false
         },
         {
             "title": "Get Identities",
             "operation": "get_identities",
+            "annotation": "get_identities",
             "description": "Get Suridata identities",
             "parameters": [
                 {
                     "title": "Limit",
                     "type": "integer",
                     "name": "limit",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": 1000,
+                    "description": "Limit the number of results in the response",
                     "tooltip": "Limit the number of results in the response"
                 }
             ],
-            "open": false
+            "open": false,
+            "output_schema": {
+                "content": {
+                    "identities": [
+                        {
+                            "status": "",
+                            "findings": [
+                                {
+                                    "name": "",
+                                    "type": "",
+                                    "risks": [
+                                        "",
+                                        ""
+                                    ],
+                                    "severity": "",
+                                    "applications": [
+                                        ""
+                                    ]
+                                }
+                            ],
+                            "priority": "",
+                            "user_name": "",
+                            "user_email": "",
+                            "applications": [
+                                {
+                                    "is_sso": "",
+                                    "user_id": "",
+                                    "role_type": "",
+                                    "user_roles": [
+                                        ""
+                                    ],
+                                    "application": "",
+                                    "user_groups": [
+                                        ""
+                                    ],
+                                    "application_id": "",
+                                    "application_fqdn": "",
+                                    "is_external_user": "",
+                                    "user_created_date": "",
+                                    "user_display_name": "",
+                                    "last_activated_date": ""
+                                }
+                            ],
+                            "user_risk_count": "",
+                            "third_party_apps": []
+                        }
+                    ]
+                },
+                "pagination": {
+                    "next_page": "",
+                    "page_token": "",
+                    "page_records": "",
+                    "total_records": ""
+                }
+            }
         },
         {
             "title": "Get User Activities",
             "operation": "get_user_activities",
+            "annotation": "get_user_activities",
             "description": "Get User activities.",
             "parameters": [
                 {
                     "title": "Limit",
                     "type": "integer",
                     "name": "limit",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": 20,
+                    "description": "Limit the number of results in the response",
                     "tooltip": "Limit the number of results in the response"
                 },
                 {
@@ -147,6 +261,7 @@
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter specific activities types",
                     "tooltip": "Filter specific activities types",
                     "options": [
                         "file_viewed",
@@ -188,7 +303,8 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
-                    "tooltip": "Filter specific applications names"
+                    "description": "Filter specific applications names like Microsoft 365, OneDrive",
+                    "tooltip": "Filter specific applications names like Microsoft 365, OneDrive"
                 },
                 {
                     "title": "User E-Mails",
@@ -198,6 +314,7 @@
                     "visible": true,
                     "editable": true,
                     "value": "",
+                    "description": "Filter specific emails that triggered the activity",
                     "tooltip": "Filter specific emails that triggered the activity"
                 },
                 {
@@ -208,6 +325,7 @@
                     "visible": true,
                     "editable": true,
                     "value": "activity_ts",
+                    "description": "Determine if time sort and filter apply to activity time or event creation time",
                     "tooltip": "Determine if time sort and filter apply to activity time or event creation time",
                     "options": [
                         "activity_ts",
@@ -218,20 +336,22 @@
                     "title": "Start Date/Time",
                     "type": "datetime",
                     "name": "startDateTime",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results from date according to field_time",
                     "tooltip": "Filter results from date according to field_time"
                 },
                 {
                     "title": "End Date/Time",
                     "type": "datetime",
                     "name": "endDateTime",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results to date according to field_time",
                     "tooltip": "Filter results to date according to field_time"
                 },
                 {
@@ -242,6 +362,7 @@
                     "visible": true,
                     "editable": true,
                     "value": "asc",
+                    "description": "Sort results according to field_time",
                     "tooltip": "Sort results according to field_time",
                     "options": [
                         "asc",
@@ -249,21 +370,69 @@
                     ]
                 }
             ],
-            "open": false
+            "open": false,
+            "output_schema": {
+                "content": {
+                    "user_activities": [
+                        {
+                            "ip_info": {
+                                "asn": "",
+                                "city": "",
+                                "radius": "",
+                                "region": "",
+                                "country": "",
+                                "latitude": "",
+                                "longitude": "",
+                                "ip_address": "",
+                                "cloud_provider": "",
+                                "asn_organization": "",
+                                "is_cloud_provider": "",
+                                "is_anonymous_proxy": ""
+                            },
+                            "user_id": "",
+                            "plugin_id": "",
+                            "created_at": "",
+                            "user_email": "",
+                            "activity_ts": "",
+                            "is_non_human": "",
+                            "activity_type": "",
+                            "application_id": "",
+                            "application_name": "",
+                            "activity_category": "",
+                            "display_parameters": {
+                                "id": "",
+                                "login": "",
+                                "device_info": {
+                                    "os": "",
+                                    "os_version": "",
+                                    "application": "",
+                                    "user_agent_string": "",
+                                    "application_version": ""
+                                },
+                                "is_saml_login": "",
+                                "login_destination_application": ""
+                            },
+                            "action_target_entities": []
+                        }
+                    ]
+                }
+            }
         },
         {
             "title": "Get Files",
             "operation": "get_files",
+            "annotation": "get_files",
             "description": "Get details and information related to files.",
             "parameters": [
                 {
                     "title": "Limit",
                     "type": "integer",
                     "name": "limit",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": 20,
+                    "description": "Limit the number of results in the response",
                     "tooltip": "Limit the number of results in the response"
                 },
                 {
@@ -274,6 +443,7 @@
                     "visible": true,
                     "editable": true,
                     "value": "desc",
+                    "description": "Sort order of creation date",
                     "tooltip": "Sort order of creation date",
                     "options": [
                         "asc",
@@ -284,58 +454,65 @@
                     "title": "Create Date/Time From",
                     "type": "datetime",
                     "name": "createDateTimeFrom",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results from start date of file creation",
                     "tooltip": "Filter results from start date of file creation"
                 },
                 {
                     "title": "Create Date/Time To",
                     "type": "datetime",
                     "name": "createDateTimeTo",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results till end date of file creation",
                     "tooltip": "Filter results till end date of file creation"
                 },
                 {
                     "title": "Update Date/Time From",
                     "type": "datetime",
                     "name": "updateDateTimeFrom",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results from start date of file modification",
                     "tooltip": "Filter results from start date of file modification"
                 },
                 {
                     "title": "Update Date/Time To",
                     "type": "datetime",
                     "name": "updateDateTimeTo",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results till end date of file modification",
                     "tooltip": "Filter results till end date of file modification"
                 }
             ],
-            "open": false
+            "open": false,
+            "output_schema": {}
         },
         {
             "title": "Get Audit Log",
             "operation": "get_audit_log",
+            "annotation": "get_audit_log",
             "description": "Get FortiCASB-SSPM Audit Log",
             "parameters": [
                 {
                     "title": "Limit",
                     "type": "integer",
                     "name": "limit",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": 20,
+                    "description": "Limit the number of results in the response",
                     "tooltip": "Limit the number of results in the response"
                 },
                 {
@@ -347,6 +524,7 @@
                     "editable": true,
                     "value": "DESC",
                     "tooltip": "Sort order of creation date",
+                    "description": "Sort order of creation date",
                     "options": [
                         "ASC",
                         "DESC"
@@ -356,23 +534,46 @@
                     "title": "Start Date",
                     "type": "datetime",
                     "name": "startDate",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results from start date",
                     "tooltip": "Filter results from start date"
                 },
                 {
                     "title": "End Date",
                     "type": "datetime",
                     "name": "endDate",
-                    "required": false,
+                    "required": true,
                     "visible": true,
                     "editable": true,
                     "value": null,
+                    "description": "Filter results till end date",
                     "tooltip": "Filter results till end date"
                 }
             ],
+            "output_schema": {
+                "content": {
+                    "audit": [
+                        {
+                            "date": "",
+                            "user": "",
+                            "action": "",
+                            "details": "",
+                            "feature": "",
+                            "event_type": "",
+                            "ip_address": ""
+                        }
+                    ]
+                },
+                "pagination": {
+                    "next_page": "",
+                    "page_token": "",
+                    "page_records": "",
+                    "total_records": ""
+                }
+            },
             "open": false
         }
     ]
