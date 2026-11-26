@@ -7,7 +7,7 @@ Copyright end
 
 import requests
 from connectors.core.connector import get_logger, ConnectorError
-from .constants import LOGGER_NAME, RISK_API_ENDPOINT
+from .constants import *
 from .utils import api_query_call
 logger = get_logger(LOGGER_NAME)
 
@@ -16,7 +16,7 @@ def get_risks(config, params):
     try:
         query = {
             "limit": params.get('limit'),
-            "order": params.get('sort'),
+            "order": SORT_ORDER.get(params.get('sort')) if params.get('sort') else 'ASC',
             "min_score": params.get('minimumScore'),
             "max_score": params.get('maximumScore'),
             "sort_field": params.get('sortField')

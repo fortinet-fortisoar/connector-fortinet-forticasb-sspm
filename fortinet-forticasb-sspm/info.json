@@ -4,8 +4,8 @@
     "label": "Fortinet FortiCASB-SSPM",
     "description": "FortiCASB-SSPM (SaaS Security Posture Management) is a cloud-based solution that provides visibility into security risks, user activities, identities, and data exposure across connected SaaS applications via API integration.",
     "publisher": "Fortinet",
-    "contributor": "Julian Petersohn (Fortinet Cloud CSE)",
-    "cs_approved": false,
+    "contributor": "Julian Petersohn",
+    "cs_approved": true,
     "cs_compatible": true,
     "help_online": "",
     "icon_small_name": "small.png",
@@ -15,17 +15,6 @@
     ],
     "configuration": {
         "fields": [
-            {
-                "title": "Integration Key",
-                "type": "password",
-                "name": "integrationKey",
-                "required": true,
-                "visible": true,
-                "editable": true,
-                "value": null,
-                "description": "Provide the Integration Key Value of the API Key.",
-                "tooltip": "Provide the Integration Key Value of the API Key."
-            },
             {
                 "title": "URL",
                 "type": "url",
@@ -38,6 +27,17 @@
                 "tooltip": "URL for the tenanat of FortiCASB-SSPM. For Example: https://<customer_name>.app.suridata.ai"
             },
             {
+                "title": "Integration Key",
+                "type": "password",
+                "name": "integrationKey",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": null,
+                "description": "Provide the Integration Key Value of the API Key.",
+                "tooltip": "Provide the Integration Key Value of the API Key."
+            },
+            {
                 "title": "User ID",
                 "type": "text",
                 "name": "userID",
@@ -47,6 +47,17 @@
                 "value": "",
                 "description": "Provide the User ID Value of the API Key.",
                 "tooltip": "Provide the User ID Value of the API Key."
+            },
+            {
+                "title": "Verify SSL",
+                "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is selected, i.e., set to true",
+                "tooltip": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is selected, i.e., set to true",
+                "type": "checkbox",
+                "name": "verify_ssl",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": true
             }
         ]
     },
@@ -55,7 +66,8 @@
             "title": "Get Risks",
             "operation": "get_risks",
             "annotation": "get_risks",
-            "description": "Pull SSPM findings/misconfigurations (risks)",
+            "description": "Retrieve security risks identified by FortiCASB's SaaS Security Posture Management (SSPM) assessment.",
+            "category": "investigation",
             "parameters": [
                 {
                     "title": "Limit",
@@ -75,12 +87,12 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": "DESC",
                     "description": "Sort order of creation date",
                     "tooltip": "Sort order of creation date",
+                    "value": "Ascending",
                     "options": [
-                        "ASC",
-                        "DESC"
+                        "Ascending",
+                        "Descending"
                     ]
                 },
                 {
@@ -166,7 +178,8 @@
             "title": "Get Identities",
             "operation": "get_identities",
             "annotation": "get_identities",
-            "description": "Get Suridata identities",
+            "description": "Retrieve identity information (users and accounts) associated with the SaaS applications monitored by FortiCASB.",
+            "category": "investigation",
             "parameters": [
                 {
                     "title": "Limit",
@@ -240,7 +253,8 @@
             "title": "Get User Activities",
             "operation": "get_user_activities",
             "annotation": "get_user_activities",
-            "description": "Get User activities.",
+            "description": "Retrieves user activity records from FortiCASB-SSPM, such as Login Failure",
+            "category": "investigation",
             "parameters": [
                 {
                     "title": "Limit",
@@ -264,35 +278,35 @@
                     "description": "Filter specific activities types",
                     "tooltip": "Filter specific activities types",
                     "options": [
-                        "file_viewed",
-                        "file_deleted",
-                        "file_moved",
-                        "file_copied",
-                        "file_downloaded",
-                        "file_shared",
-                        "file_sharing_revoked",
-                        "file_shared_internally",
-                        "file_shared_externally",
-                        "file_link_created",
-                        "file_owner_changed",
-                        "login_success",
-                        "login_failure",
-                        "user_created",
-                        "user_deleted",
-                        "group_created",
-                        "group_deleted",
-                        "group_assigned",
-                        "group_deassigned",
-                        "mfa_enabled",
-                        "mfa_disabled",
-                        "password_reset",
-                        "enabled_third_party",
-                        "disabled_third_party",
-                        "add_third_party_permissions",
-                        "remove_third_party_permissions",
-                        "sensitivity_label_applied",
-                        "sensitivity_label_removed",
-                        "sensitivity_label_changed"
+                        "File Viewed",
+                        "File Deleted",
+                        "File Moved",
+                        "File Copied",
+                        "File Downloded",
+                        "File Shared",
+                        "File Sharing Revoked",
+                        "File Shared Internally",
+                        "File Shared Externally",
+                        "File Link Created",
+                        "File Owner Changed",
+                        "Login Success",
+                        "Login Failure",
+                        "User Created",
+                        "User Deleted",
+                        "Group Created",
+                        "Group Deleted",
+                        "Group Assigned",
+                        "Group Deassigned",
+                        "MFA Enabled",
+                        "MFA Disabled",
+                        "Password Reset",
+                        "Enabled Third Party",
+                        "Disabled Third Party",
+                        "Add Third Party Permissions",
+                        "Remove Third Party Permissions",
+                        "Sensitivity Label Applied",
+                        "Sensitivity Label Removed",
+                        "Sensitivity Label Changed"
                     ]
                 },
                 {
@@ -302,7 +316,7 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": "",
+                    "value": "Microsoft 365",
                     "description": "Filter specific applications names like Microsoft 365, OneDrive",
                     "tooltip": "Filter specific applications names like Microsoft 365, OneDrive"
                 },
@@ -324,12 +338,12 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": "activity_ts",
+                    "value": "Activity Timestamp",
                     "description": "Determine if time sort and filter apply to activity time or event creation time",
                     "tooltip": "Determine if time sort and filter apply to activity time or event creation time",
                     "options": [
-                        "activity_ts",
-                        "created_at"
+                        "Activity Timestamp",
+                        "Record Creation Timestamp"
                     ]
                 },
                 {
@@ -357,16 +371,16 @@
                 {
                     "title": "Order",
                     "type": "select",
-                    "name": "order",
+                    "name": "sort",
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": "asc",
                     "description": "Sort results according to field_time",
                     "tooltip": "Sort results according to field_time",
+                    "value": "Ascending",
                     "options": [
-                        "asc",
-                        "desc"
+                        "Ascending",
+                        "Descending"
                     ]
                 }
             ],
@@ -423,6 +437,7 @@
             "operation": "get_files",
             "annotation": "get_files",
             "description": "Get details and information related to files.",
+            "category": "investigation",
             "parameters": [
                 {
                     "title": "Limit",
@@ -442,12 +457,12 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": "desc",
                     "description": "Sort order of creation date",
                     "tooltip": "Sort order of creation date",
+                    "value": "Ascending",
                     "options": [
-                        "asc",
-                        "desc"
+                        "Ascending",
+                        "Descending"
                     ]
                 },
                 {
@@ -502,7 +517,8 @@
             "title": "Get Audit Log",
             "operation": "get_audit_log",
             "annotation": "get_audit_log",
-            "description": "Get FortiCASB-SSPM Audit Log",
+            "description": "Retrieves audit log records from FortiCASB-SSPM, such as user activities, system events etc.",
+            "category": "investigation",
             "parameters": [
                 {
                     "title": "Limit",
@@ -522,12 +538,11 @@
                     "required": false,
                     "visible": true,
                     "editable": true,
-                    "value": "DESC",
                     "tooltip": "Sort order of creation date",
                     "description": "Sort order of creation date",
                     "options": [
-                        "ASC",
-                        "DESC"
+                        "Ascending",
+                        "Descending"
                     ]
                 },
                 {

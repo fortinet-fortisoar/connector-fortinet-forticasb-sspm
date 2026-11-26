@@ -7,7 +7,7 @@ Copyright end
 
 import requests
 from connectors.core.connector import get_logger, ConnectorError
-from .constants import LOGGER_NAME, AUDIT_API_ENDPOINT
+from .constants import LOGGER_NAME, AUDIT_API_ENDPOINT, SORT_ORDER
 from .utils import api_query_call
 logger = get_logger(LOGGER_NAME)
 
@@ -16,7 +16,7 @@ def get_audit_log(config, params):
     try:
         query = {
             "limit": params.get('limit'),
-            "sort": params.get('sort'),
+            "sort": SORT_ORDER.get(params.get('sort')) if params.get('sort') else 'ASC',
             "start_date": params.get('startDate'),
             "end_date": params.get('endDate')
         }
