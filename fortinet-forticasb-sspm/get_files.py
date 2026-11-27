@@ -7,7 +7,7 @@ Copyright end
 
 import requests
 from connectors.core.connector import get_logger, ConnectorError
-from .constants import LOGGER_NAME, FILES_API_ENDPOINT
+from .constants import LOGGER_NAME, FILES_API_ENDPOINT, SORT_ORDER
 from .utils import api_query_call
 logger = get_logger(LOGGER_NAME)
 
@@ -16,7 +16,7 @@ def get_files(config, params):
     try:
         query = {
             "limit": params.get('limit'),
-            "sort": params.get('sort'),
+            "sort": (SORT_ORDER.get(params.get('sort')) if params.get('sort') else 'asc').lower(),
             "from_record_created_date": params.get('createDateTimeFrom'),
             "to_record_created_date": params.get('createDateTimeTo'),
             "from_record_updated_date": params.get('updateDateTimeFrom'),

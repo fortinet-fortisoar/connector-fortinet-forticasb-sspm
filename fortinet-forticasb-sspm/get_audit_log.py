@@ -7,21 +7,20 @@ Copyright end
 
 import requests
 from connectors.core.connector import get_logger, ConnectorError
-from .constants import LOGGER_NAME, RISK_API_ENDPOINT
+from .constants import LOGGER_NAME, AUDIT_API_ENDPOINT, SORT_ORDER
 from .utils import api_query_call
 logger = get_logger(LOGGER_NAME)
 
 
-def get_risks(config, params):
+def get_audit_log(config, params):
     try:
         query = {
             "limit": params.get('limit'),
-            "order": params.get('sort'),
-            "min_score": params.get('minimumScore'),
-            "max_score": params.get('maximumScore'),
-            "sort_field": params.get('sortField')
+            "sort": SORT_ORDER.get(params.get('sort')) if params.get('sort') else 'ASC',
+            "start_date": params.get('startDate'),
+            "end_date": params.get('endDate')
         }
-        response = api_query_call(config, query=query, endpoint=RISK_API_ENDPOINT)
+        response = api_query_call(config, query=query, endpoint=AUDIT_API_ENDPOINT)
         return response.json()
     except Exception as err:
         logger.exception(err)

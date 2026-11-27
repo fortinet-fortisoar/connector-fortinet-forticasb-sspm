@@ -1,0 +1,499 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Fortinet FortiCASB-SSPM - 1.0.0",
+      "description": "Sample playbooks for \"Fortinet FortiCASB-SSPM\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "data:png;base64,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",
+      "id": 52,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "forticasb-sspm",
+        "fortinet"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Risks",
+          "aliasName": null,
+          "tag": "#FortiCASB-SSPM",
+          "description": "Pull SSPM findings/misconfigurations (risks)",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1793348625,
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5e3ce784-1bea-47b4-8e8c-f1deabcb745c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Risks",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB-SSPM",
+                "config": "b1438cfa-b4e4-49df-bdb5-094ecec61688",
+                "params": {
+                  "sort": "DESC",
+                  "limit": 20,
+                  "sortField": "SCORE",
+                  "maximumScore": 100,
+                  "minimumScore": ""
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticasb-sspm",
+                "operation": "get_risks",
+                "operationTitle": "Get Risks",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "140",
+              "left": "200",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "0ba6dedb-1086-4843-8ff8-946e8b1c9d1d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "5e3ce784-1bea-47b4-8e8c-f1deabcb745c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Risks",
+              "targetStep": "/api/3/workflow_steps/0ba6dedb-1086-4843-8ff8-946e8b1c9d1d",
+              "sourceStep": "/api/3/workflow_steps/5e3ce784-1bea-47b4-8e8c-f1deabcb745c",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "62715d65-2014-4758-9d36-6ca1d6307df6"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "50843ace-5ade-477a-bcf9-6dca161319a9",
+          "id": 839,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "forticasb-sspm",
+            "fortinet"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Audit Log",
+          "aliasName": null,
+          "tag": "#FortiCASB-SSPM",
+          "description": "Get FortiCASB-SSPM Audit Log",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1793616146,
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/63d834ab-2609-424f-b222-0cd27959e412",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Audit Log",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB-SSPM",
+                "config": "b1438cfa-b4e4-49df-bdb5-094ecec61688",
+                "params": {
+                  "sort": "Ascending",
+                  "limit": 10,
+                  "endDate": "2026-11-02T10:42:16.338Z",
+                  "startDate": "2026-09-30T18:30:00.000Z"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticasb-sspm",
+                "operation": "get_audit_log",
+                "operationTitle": "Get Audit Log",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "140",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a3bf04b6-a052-42a9-a167-c484aef26e2c"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "63d834ab-2609-424f-b222-0cd27959e412"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Audit Log",
+              "targetStep": "/api/3/workflow_steps/a3bf04b6-a052-42a9-a167-c484aef26e2c",
+              "sourceStep": "/api/3/workflow_steps/63d834ab-2609-424f-b222-0cd27959e412",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "62abe6c6-a88b-4133-9bf9-dbc0addb0f3a"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "80a5765e-665c-4bb6-afe6-ad9910161a9e",
+          "id": 843,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "forticasb-sspm",
+            "fortinet"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Identities",
+          "aliasName": null,
+          "tag": "#FortiCASB-SSPM",
+          "description": "Get Suridata identities",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1793618923,
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/114fb4d7-71db-49f7-b0bf-6988ad2df1c6",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Identities",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB-SSPM",
+                "config": "b1438cfa-b4e4-49df-bdb5-094ecec61688",
+                "params": {
+                  "limit": 1000
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticasb-sspm",
+                "operation": "get_identities",
+                "operationTitle": "Get Identities",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "140",
+              "left": "200",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ad07f5d4-c0bc-4685-a0a1-660828cea863"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "114fb4d7-71db-49f7-b0bf-6988ad2df1c6"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Identities",
+              "targetStep": "/api/3/workflow_steps/ad07f5d4-c0bc-4685-a0a1-660828cea863",
+              "sourceStep": "/api/3/workflow_steps/114fb4d7-71db-49f7-b0bf-6988ad2df1c6",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "74651bf2-f92d-4250-81f0-5c8a9c28a13c"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "8260aa9f-507a-40a5-babb-f1f890964fdd",
+          "id": 840,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "forticasb-sspm",
+            "fortinet"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get User Activities",
+          "aliasName": null,
+          "tag": "#FortiCASB-SSPM",
+          "description": "Get User activities.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1795700348,
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/74324ab8-00c9-44fe-8784-0fffe3b16681",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get User Activities",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB-SSPM",
+                "config": "b1438cfa-b4e4-49df-bdb5-094ecec61688",
+                "params": {
+                  "sort": "Ascending",
+                  "limit": 10,
+                  "userEMails": "demouser@example.com",
+                  "endDateTime": "2026-10-30T18:30:00.000Z",
+                  "activityTypes": "Login Success",
+                  "startDateTime": "2026-10-20T18:30:00.000Z",
+                  "timeSortField": "Activity Timestamp",
+                  "applicationNames": "Microsoft 365"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticasb-sspm",
+                "operation": "get_user_activities",
+                "operationTitle": "Get User Activities",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "220",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f85d3ec0-a941-4638-9e1d-2f6954e69407"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "74324ab8-00c9-44fe-8784-0fffe3b16681"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get User Activities",
+              "targetStep": "/api/3/workflow_steps/f85d3ec0-a941-4638-9e1d-2f6954e69407",
+              "sourceStep": "/api/3/workflow_steps/74324ab8-00c9-44fe-8784-0fffe3b16681",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "ed308a95-226f-497e-9954-757028aa6c83"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "a526db62-dea2-4499-89fa-d980dba26ff6",
+          "id": 841,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "forticasb-sspm",
+            "fortinet"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Files",
+          "aliasName": null,
+          "tag": "#FortiCASB-SSPM",
+          "description": "Get details and information related to files.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1795700255,
+          "collection": "/api/3/workflow_collections/fba24cc7-3078-486d-a5ad-f47d6222aa2a",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2c1f1a8f-d712-4447-bcf8-e7526fb1aab9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Files",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiCASB-SSPM",
+                "config": "b1438cfa-b4e4-49df-bdb5-094ecec61688",
+                "params": {
+                  "sort": "Ascending",
+                  "limit": 20,
+                  "createDateTimeTo": "2026-11-02T09:11:24.411Z",
+                  "updateDateTimeTo": "2026-11-02T09:11:31.836Z",
+                  "createDateTimeFrom": "2026-09-30T18:30:00.000Z",
+                  "updateDateTimeFrom": "2026-09-30T18:30:00.000Z"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-forticasb-sspm",
+                "operation": "get_files",
+                "operationTitle": "Get Files",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "175003b2-4dda-43ec-b0bc-d5e6b2b09ea1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "2c1f1a8f-d712-4447-bcf8-e7526fb1aab9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Files",
+              "targetStep": "/api/3/workflow_steps/175003b2-4dda-43ec-b0bc-d5e6b2b09ea1",
+              "sourceStep": "/api/3/workflow_steps/2c1f1a8f-d712-4447-bcf8-e7526fb1aab9",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9453ab05-2f02-4202-92a9-f44555f4329c"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "a838589d-6dab-4ead-aa7c-19d40ef10ef5",
+          "id": 842,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "forticasb-sspm",
+            "fortinet"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "forticasb-sspm",
+    "fortinet"
+  ]
+}

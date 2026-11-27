@@ -15,11 +15,12 @@ logger = get_logger(LOGGER_NAME)
 def get_auth_token(config, **kwargs):
     try:
         url = config.get("uRL") + AUTH_API_ENDPOINT
+        verify_ssl = config.get("verify_ssl")
         credentials = {
             "user_id": f"{config.get('userID')}",
             "api_key": f"{config.get('integrationKey')}"
         }
-        response = requests.post(url=url, json=credentials, timeout=REQUEST_TIMEOUT)
+        response = requests.post(url=url, json=credentials, timeout=REQUEST_TIMEOUT,verify=verify_ssl)
         if not response.ok:
             logger.error("Error: {0}".format(response.content))
             raise ConnectorError('Error: {0}'.format(response.content))
@@ -36,9 +37,10 @@ def get_auth_token(config, **kwargs):
 def api_query_call(config, query=None, endpoint=None, **kwargs):
     try:
         url = config.get("uRL") + endpoint
+        verify_ssl = config.get("verify_ssl")
         access_token = get_auth_token(config)
         header = {'Authorization': 'Bearer ' + access_token}
-        result = requests.get(url=url, params=query, headers=header, timeout=REQUEST_TIMEOUT)
+        result = requests.get(url=url, params=query, headers=header, timeout=REQUEST_TIMEOUT,verify=verify_ssl)
         return result
     except Exception as e:
         logger.error('{0}'.format(e))
